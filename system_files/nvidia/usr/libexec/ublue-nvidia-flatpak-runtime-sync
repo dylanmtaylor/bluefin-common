@@ -3,7 +3,7 @@
 # Workaround for: https://github.com/flatpak/flatpak/issues/3907
 set -euo pipefail
 
-SYSTEM_NVIDIA_VERSION=$(head -1 /proc/driver/nvidia/version | grep -oP '\d+(\.\d+)+')
+SYSTEM_NVIDIA_VERSION=$(cat /sys/module/nvidia/version)
 FLATPAK_NVIDIA_VERSION=$(echo "${SYSTEM_NVIDIA_VERSION}" | tr '.' '-')
 
 case "${1}" in
